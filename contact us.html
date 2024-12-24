@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Pet Adoption</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+
+            background: linear-gradient(135deg, #7EA1FF, #13649d);
+            animation: gradient-animation 8s infinite ease-in-out;
+            color: #fff;
+        }
+
+        @keyframes gradient-animation {
+  0% {
+      background-position: 0% 50%;  
+      }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+        h1, h2 {
+            text-align: center;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background: -webkit-linear-gradient(45deg, #FFD1E3, #7EA1FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, #FFD1E3, #FFFFFF);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            animation: fadeIn 1.5s ease-out;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(94, 170, 255, 0.4), transparent);
+            border-radius: 15px;
+            z-index: -1;
+            filter: blur(15px);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .contact-form:hover::before {
+            opacity: 1;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(126, 161, 255, 0.6);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #555;
+            transition: color 0.3s ease-in-out;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        }
+        input:hover, textarea:hover {
+            border-color: #5BBCFF;
+            box-shadow: 0 6px 15px rgba(91, 188, 255, 0.5);
+        }
+        input:focus, textarea:focus {
+            border-color: #FFD1E3;
+            box-shadow: 0 6px 20px rgba(255, 209, 227, 0.6);
+            outline: none;
+        }
+        textarea {
+            resize: none;
+            height: 150px;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #5BBCFF, #FFD1E3);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #FFD1E3, #7EA1FF);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(126, 161, 255, 0.6);
+        }
+        .contact-info {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .info-box {
+            background: linear-gradient(135deg, #FFD1E3, #FFFFFF);
+            padding: 20px;
+            border-radius: 15px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .info-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(126, 161, 255, 0.5);
+        }
+        .info-box h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #5BBCFF;
+        }
+        .info-box p {
+            font-size: 1rem;
+            color: #333;
+        }
+        .contact-form:hover{
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you! Whether you have questions, feedback, or just want to say hello, feel free to reach out.</p>
+
+        <!-- Contact Form -->
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <div class="info-box">
+                <h3>Email</h3>
+                <p>contact@petadoption.com</p>
+            </div>
+            <div class="info-box">
+                <h3>Phone</h3>
+                <p>+1 (123) 456-7890</p>
+            </div>
+            <div class="info-box">
+                <h3>Address</h3>
+                <p>123 Pet Lane, Animal City, PA 56789</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

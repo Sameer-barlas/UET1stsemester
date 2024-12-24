@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Adoption</title>
+  <style>
+    /* Reset some default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(45deg, #ff7cfc, #87cefa); /* Gradient background */
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100%;
+      padding: 0;
+    }
+
+    /* Header section */
+    header {
+      width: 100%;
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .subheading {
+      margin-top: 20px;
+      font-size: 1.8em;
+      color: white;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Pet Container */
+    .pet-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* responsive layout */
+      gap: 30px;
+      padding: 40px 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 50px;
+      overflow-y: auto; 
+      flex-grow: 1;
+    }
+
+    /* Pet Card */
+    .pet-card {
+      background: linear-gradient(to top left, #ffffff, #ffb3d9); /* Light pink gradient */
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      height: 350px; 
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    }
+
+    /* Pet image */
+    .pet-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* Pet name and description */
+    .pet-card h3 {
+      margin-top: 15px;
+      font-size: 1.5em;
+      color: #333;
+    }
+
+    .pet-card p {
+      color: #666;
+      font-size: 1em;
+      margin-top: 10px;
+    }
+
+    
+    .pet-card:hover {
+      transform: scale(1.05); /* Slightly scale up the card */
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Add a larger shadow */
+      border: 4px solid rgba(255, 182, 193, 0.8); /* Glow effect on border */
+    }
+
+    /* Future Plans Section */
+    .future-plans {
+      background-color: #fff;
+      padding: 50px;
+      text-align: center;
+      margin-top: 50px;
+      border-radius: 10px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 1000px;
+      margin-bottom: 50px;
+    }
+
+    .future-plans h2 {
+      font-size: 2.5em;
+      color: #ff7cfc;
+      margin-bottom: 20px;
+    }
+
+    .future-plans p {
+      font-size: 1.2em;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Media */
+    @media (max-width: 768px) {
+      .pet-container {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Our Pet Adoption Center</h1>
+    <div class="subheading">
+      <p>Find Your New Best Friend Today!</p>
+    </div>
+  </header>
+
+  <main class="pet-container">
+    <!-- Pet card 1 -->
+    <div class="pet-card">
+      <img src="./availablePet1.jpeg" alt="Dog">
+      <h3>Max the Dog</h3>
+      <p>A friendly dog looking for a home!</p>
+    </div>
+
+    <!-- Pet card 2 -->
+    <div class="pet-card">
+      <img src="./availablePet2.jpeg" alt="Cat">
+      <h3>Whiskers the Cat</h3>
+      <p>Whiskers loves cuddles and is very playful.</p>
+    </div>
+
+    <!-- Pet card 3 -->
+    <div class="pet-card">
+      <img src="./availablePet5.jpeg" alt="Dog">
+      <h3>Buddy the Dog</h3>
+      <p>Buddy is a loyal companion looking for a loving home.</p>
+    </div>
+
+    <!-- Pet card 4 -->
+    <div class="pet-card">
+      <img src="availablePet4.jpeg" alt="Cat">
+      <h3>Fluffy the Cat</h3>
+      <p>Fluffy enjoys laying in the sun and playing with toys.</p>
+    </div>
+
+    <!-- Pet card 5 -->
+    <div class="pet-card">
+      <img src="./availablePet3.jpeg" alt="Dog">
+      <h3>Rex the Dog</h3>
+      <p>Rex is very active and loves playing fetch.</p>
+    </div>
+
+    <!-- Pet card 6 -->
+    <div class="pet-card">
+      <img src="availablePet6.jpeg" alt="Cat" height="300" width="200">
+      <h3>Mittens the Cat</h3>
+      <p>Mittens loves attention and cuddles.</p>
+    </div>
+
+    <!-- Pet card 7 -->
+    <div class="pet-card">
+      <img src="./availablePet7.jpeg" alt="Dog">
+      <h3>Charlie the Dog</h3>
+      <p>Charlie loves walks and playing with kids.</p>
+    </div>
+
+    <!-- Pet card 8 -->
+    <div class="pet-card">
+      <img src="./availablePet8.jpeg" alt="Cat">
+      <h3>Leo the Cat</h3>
+      <p>Leo is calm and enjoys being around people.</p>
+    </div>
+
+    <!-- Pet card 9 -->
+    <div class="pet-card">
+      <img src="./availablePet9.jpeg" alt="Dog">
+      <h3>Sadie the Dog</h3>
+      <p>Sadie is a gentle and loving dog who gets along with everyone.</p>
+    </div>
+
+    <!-- Pet card 10 -->
+    <div class="pet-card">
+      <img src="./availablePet10.jpeg" alt="Cat">
+      <h3>Oliver the Cat</h3>
+      <p>Oliver enjoys climbing trees and playing with strings.</p>
+    </div>
+  </main>
+
+  <!-- Future Plans Section -->
+  <div class="future-plans">
+    <h2>Exciting Future Plans</h2>
+    <p>
+      We're constantly growing and looking to bring more pets to our adoption center!
+      In the near future, we will be welcoming friendly animals such as rabbits, squirrels, and other lovable creatures.
+      Our goal is to provide every pet with a safe and caring shelter, where they can find their forever homes. Stay tuned for more updates!
+    </p>
+  </div>
+</body>
+</html>

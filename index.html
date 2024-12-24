@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption Website</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0; 
+            box-sizing: borderbox;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #ff758c, #ff6b6b);
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+         
+            
+        }
+
+        .navbar .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            color: #fff;
+            padding: 8px 12px;  
+            border-radius: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar ul li a:hover {
+            background: #ffffff;
+            color: #ff6b6b;
+            box-shadow: 0px 4px 10px rgba(255, 105, 135, 0.5);
+        }
+        .navbar ul li a.active {
+            background: #ffffff;
+            color: #ff6b6b;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px;
+            height: 70vh;
+            background: linear-gradient(135deg,#ff6b6b , #ffe4e9 ,#ff758c);
+            background-size: 300% 300%;
+            animation: gradientShift 8s infinite ease-in-out;
+            color: #fff;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header-content {
+            max-width: 50%;
+        }
+
+        .header-content h1 {
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.2;
+            background: -webkit-linear-gradient(#ffffff, #ffe4e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .header-content button {
+            padding: 12px 25px;
+            font-size: 17px;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(45deg, #ffffff, #ffd1dc);
+            color: #ff6b6b;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .header-content button:hover {
+            background: #ff6b6b;
+            color: white;
+            box-shadow: 0px 6px 15px rgba(27, 22, 23, 0.5);
+            transform: scale(1.05);
+        }
+        .header-image {
+            max-width: 45%;
+        }
+        .header-image img {
+            width: 100%;
+            border-radius: 20px;    
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+            height: 350px;
+            width: 300px;
+            margin-right: 40px;  
+            background-blend-mode: color-burn;                           
+        }    
+        .hero {
+            background-color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin: 0;
+            color: #222;
+            animation: zoomIn 1.5s forwards;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin: 15px 0;
+            max-width: 700px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .cta-buttons a {
+            text-decoration: none;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 17x;
+            font-weight: bold;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-buttons a:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .search-bar {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            animation: fadeInUp 3s forwards;
+        }
+
+        .search-bar input {
+            padding: 15px;
+            font-size: 1rem;
+            width: 350px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            outline: none;
+            transition: border 0.3s ease, transform 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            border: 2px solid #0056b3;
+            transform: scale(1.05);
+        }
+
+        .search-bar button {
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .hero .trust {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #555;
+            animation: fadeInUp 3.5s forwards;
+        }
+
+        .hero .trust span {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .floating-paw {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 123, 255, 0.2);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite, move 8s linear infinite;
+        }
+
+        .floating-paw:nth-child(1) {
+            top: 10%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .floating-paw:nth-child(2) {
+            top: 30%;
+            right: 20%;
+            animation-delay: 2s;
+        }
+
+        .floating-paw:nth-child(3) {
+            bottom: 20%;
+            left: 25%;
+            animation-delay: 4s;
+        }
+
+        .floating-paw:nth-child(4) {
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes move {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100vw); }
+        }
+
+       
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .search-bar input {
+                width: 250px;
+            }
+        }
+       
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9ff;
+    color: #333;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: #555;
+    text-align: center;
+}
+
+#pricing {
+    padding: 40px 20px;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.pricing-card {
+    background: linear-gradient(135deg, #ffe6f2, #e6f2ff);
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    border: 2px solid transparent;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border: 2px solid #007bff;
+    animation: borderGlow 1s infinite alternate;
+}
+
+@keyframes borderGlow {
+    from {
+        border-color: #ffb3d9;
+        box-shadow: 0 0 15px #ffb3d9;
+    }
+    to {
+        border-color: #99d6ff;
+        box-shadow: 0 0 15px #99d6ff;
+    }
+}
+
+.dog-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+}
+
+.dog-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    object-fit: cover;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dog-image img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.pricing-card h3 {
+    color: #333;
+    margin: 10px 0 5px;
+    font-size: 1.5rem;
+}
+
+.pricing-card p {
+    color: #555;
+    margin: 0 0 10px;
+    font-size: 1rem;
+}
+
+.pricing-card h4 {
+    font-size: 1.2rem;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.pricing-card a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.pricing-card a:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffe6f2, #e6f2ff);
+    color: #333;
+    animation: backgroundAnimation 3s infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+    0% { background: linear-gradient(135deg, #ffe6f2, #e6f2ff); }
+    100% { background: linear-gradient(135deg, #ffcce0, #cce0ff); }
+}
+
+h1, h2 {
+    color: #007bff;
+    text-align: center;
+}
+
+p {
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reviews-header {
+    padding: 30px 20px;
+    background: rgba(255, 230, 242, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    margin: 20px auto;
+    max-width: 80%;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.reviews-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.reviews-header p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.review-card {
+    background: #ffffff;
+    border: 2px solid rgba(0, 123, 255, 0.2);
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s, box-shadow 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.review-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
+    border-color: rgba(0, 123, 255, 0.8);
+}
+
+.review-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid #007bff;
+    transition: transform 0.4s;
+}
+
+.review-card:hover img {
+    transform: rotate(10deg) scale(1.2);
+}
+
+.success-stories {
+    padding: 40px 20px;
+    background: rgba(230, 242, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    margin: 40px auto;
+    max-width: 80%;
+}
+
+.success-stories h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.success-stories p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+.stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.story-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    text-align: center;
+}
+
+.story-card:hover {
+    transform: translate;
+    border-color: #007bff;
+}
+.story-card img{
+    height: 250px;
+    width: 330px;
+}
+.story-card:hover{
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
+    border:  5px #007bff;
+    border-color: rgba(0, 123, 255, 0.8);
+}
+  
+   footer {
+            background: linear-gradient(135deg, #ff6b6b, #ffe4e9, #ff758c);
+            background-size: 300% 300%;
+            animation: gradientShift 8s infinite ease-in-out;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        footer h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        footer a:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            transform: scale(1.05);
+        }
+
+        footer .contact-info {
+            margin: 20px 0;
+        }
+
+        footer .contact-info p {
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+
+        footer .social-links a {
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        footer .credits {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid white;
+            padding-top: 15px;
+            opacity: 0.8;
+        }
+
+</style>
+</head>
+<body>
+
+    
+    <nav class="navbar">
+        <a href="#" class="logo">Adopt-A-Friend</a>
+        <ul>
+            <li><a href="./LOGIN.html">Login</a></li>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="./about us.html">About Us</a></li>
+            <li><a href="./availablePes.html">Available Pets</a></li>            
+            <li><a href="contact us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+
+    <header class="header">
+        <div class="header-content">
+            <h1>Find Your Perfect Pet</h1>
+            <p>Adopt a furry friend and give them a loving home. Explore our wide range of adorable pets waiting for a family like yours.</p>
+            <a href="./sign up.html"><button>Get Started</button></a>
+        </div>
+        <div class="header-image">
+            <img src="./pet.png" alt="Adopt Pet">
+        </div>
+    </header>
+    
+    <section class="hero">       
+        <div class="floating-paw"></div>
+        <div class="floating-paw"></div>
+        <div class="floating-paw"></div>
+        <div class="floating-paw"></div>
+        <h1>Welcome to PAC N</h1>
+        <p>Your journey to find a loving furry companion starts here. Let’s make a difference together!</p>
+        <div class="cta-buttons">
+            <a href="#adopt">Adopt a Pet</a>
+            <a href="#donate">Donate Now</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search by breed or location">
+            <button>Search</button>
+        </div>
+        <div class="trust">
+            <p>Over <span>20,000 pets</span> adopted to loving families!</p>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <h2>Adopt Your Furry Friend</h2>
+        <p>Meet these adorable dogs and choose your perfect companion!</p>
+        <div class="pricing-container">
+          
+            <div class="pricing-card">
+                <div class="dog-image">
+                    <img src="./GOLDEN-PET.jpeg" alt="Buddy">
+                </div>
+                <h3>Buddy</h3>
+                <p>Golden Retriever, 2 years old</p>
+                <h4>$200 Adoption Fee</h4>
+                <a href="#">Adopt Now</a>
+            </div>
+        
+            <div class="pricing-card">
+                <div class="dog-image">
+                    <img src="./LABRADOR-PET.jpeg" alt="Lucy">
+                </div>
+                <h3>Lucy</h3>
+                <p>Labrador, 1 year old</p>
+                <h4>$150 Adoption Fee</h4>
+                <a href="#">Adopt Now</a>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="dog-image">
+                    <img src="./POODLE-PET.jpeg" alt="Max">
+                </div>
+                <h3>Max</h3>
+                <p>Poodle, 3 years old</p>
+                <h4>$180 Adoption Fee</h4>
+                <a href="#">Adopt Now</a>
+            </div>
+           
+            <div class="pricing-card">
+                <div class="dog-image">
+                    <img src="./BEAGLE-PET.jpeg" alt="Daisy">
+                </div>
+                <h3>Daisy</h3>
+                <p>Beagle, 1.5 years old</p>
+                <h4>$170 Adoption Fee</h4>
+                <a href="#">Adopt Now</a>
+            </div>
+           
+            <div class="pricing-card">
+                <div class="dog-image">
+                    <img src="./GERMAN-PET.jpeg" alt="Charlie">
+                </div>
+                <h3>Charlie</h3>
+                <p>German Shepherd, 2.5 years old</p>
+                <h4>$220 Adoption Fee</h4>
+                <a href="#">Adopt Now</a>
+            </div>
+        </div>
+    </section>
+    <section class="reviews-container">
+       
+        <div class="review-card">
+            <img src="./girlAndDog.jpeg" alt="Reviewer 1">
+            <h3>Emily Johnson</h3>
+            <p>"Adopting Charlie was the best decision of my life! He's my constant companion and has brought so much joy to our home."</p>
+        </div>
+   
+        <div class="review-card">
+            <img src="./mandog.jpeg" alt="Reviewer 2">
+            <h3>Michael Brown</h3>
+            <p>"The adoption process was seamless, and I couldn’t be happier with my new furry friend, Buddy. Highly recommend!"</p>
+        </div>
+        
+        <div class="review-card">
+            <img src="./dogirl.jpeg" alt="Reviewer 3">
+            <h3>Sophia Lee</h3>
+            <p>"Our family is complete now that we have Lucy. Thank you for helping us find the perfect pet!"</p>
+        </div>
+    </section>
+
+    <section class="success-stories">
+        <h2>Success Stories</h2>
+        <p>See how our furry friends have transformed lives.</p>
+        <div class="stories-grid">
+            <div class="story-card">
+                <img src="./petchange1.jpeg" alt="Story 1">
+                <h3>Buddys New Life</h3>
+                <p>Buddy went from being a stray to a loved member of Emily's family, enjoying hikes and daily cuddles.</p>
+            </div>
+            <div class="story-card">
+                <img src="./petchange2.jpeg" alt="Story 2">
+                <h3>Lucys Second Chance</h3>
+                <p>Lucy was rescued and found her forever home with the Lee family, where she’s the star of every holiday card.</p>
+            </div>
+            <div class="story-card">
+                <img src="./petchange3.jpeg" alt="Story 3">
+                <h3>Maxts Big Adventure</h3>
+                <p>Max now spends his days playing fetch and being spoiled by Michael, who calls him his "best buddy."</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <h2>PAC N</h2>
+        <p>Connecting loving families with adorable pets.</p>
+
+        <div class="contact-info">
+            <p>Email: <a href="mailto:muhammad517uet@gmail.com">contact@pac_n.com</a></p>
+            <p>Phone: <a href="tel:+923167931568">+92 3167931568</a></p>
+            <p>WhatsApp: <a href="https://wa.me/12267835704">+1 (226) 783-5704</a></p>
+        </div>
+
+        
+        <nav>
+            <a href="#about">About Us</a> |
+            <a href="#adopt">Adopt</a> |
+            <a href="#volunteer">Volunteer</a> |
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+            <a href="#">Facebook</a> 
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+
+        <div class="credits">
+            <p>© 2024 PAC N. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
